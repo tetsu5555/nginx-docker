@@ -14,7 +14,8 @@ services:
     build:
         context: .
         dockerfile: ./Docker/DockerfileNode
-    ports:
-        - "8080:8080"
-    expose:
-      - "8080"
+    # ここを設定しなくても、localhost:80にリクエストを送ればいい
+    # ports:
+    #     - "8080:8080"
+    # expose:
+    #   - "8080"
