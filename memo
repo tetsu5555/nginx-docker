@@ -1,0 +1,7 @@
+// イメージビルド
+docker build -t centos-nginx:1.0 .
+
+docker run -d --privileged --name centos-container -p 8000:80 centos-nginx:1.0 /sbin/init
+
+// コンテナに入る
+docker exec -it centos-container /bin/bash
