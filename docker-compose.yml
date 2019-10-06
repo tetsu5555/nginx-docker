@@ -14,6 +14,10 @@ services:
     build:
         context: .
         dockerfile: ./Docker/DockerfileNode
+  api2:
+    build:
+        context: .
+        dockerfile: ./Docker/DockerfileNode2
     # ここを設定しなくても、localhost:80にリクエストを送ればいい
     # ports:
     #     - "8080:8080"

@@ -16,4 +16,4 @@ COPY ./server .
 RUN ls
 
 EXPOSE 8080
-CMD [ "node", "server.js" ]
+CMD [ "node", "server2.js" ]
