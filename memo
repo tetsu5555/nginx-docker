@@ -5,3 +5,12 @@ docker run -d --privileged --name centos-container -p 8000:80 centos-nginx:1.0 /
 
 // コンテナに入る
 docker exec -it centos-container /bin/bash
+
+// basic認証のファイルを作成
+yum install httpd-tools
+htpasswd -c /etc/nginx/htpasswd tetsu
+htpasswd -c <path to file> <user>
+
+// -uオプションを使えばcurlからでもBASIC認証を突破できる
+curl -u tetsu:hogehoge localhost
+curl -u <user>:<password> <target url>
