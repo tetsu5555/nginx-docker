@@ -13,7 +13,4 @@ RUN npm install
 # アプリケーションのソースをバンドルする
 COPY ./server .
 
-RUN ls
-
-EXPOSE 8080
 CMD [ "node", "server.js" ]
