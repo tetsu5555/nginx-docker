@@ -1,0 +1,37 @@
+## イメージビルド
+docker build -t centos-nginx:1.0 .
+
+docker run -d --privileged --name centos-container -p 8000:80 centos-nginx:1.0 /sbin/init
+
+## コンテナに入る
+docker exec -it centos-container /bin/bash
+
+## basic認証のファイルを作成
+yum install httpd-tools
+htpasswd -c /etc/nginx/htpasswd tetsu
+htpasswd -c <path to file> <user>
+
+##  -uオプションを使えばcurlからでもBASIC認証を突破できる
+curl -u tetsu:hogehoge localhost
+curl -u <user>:<password> <target url>
+
+## returnディレクティブ
+30x系のURLはリダイレクトさせる
+return <HTTP response code> <Redirect URL>
+
+30x系以外の場合は第二引数がレスポンスボディーになる
+return <HTTP response code> <message>
+
+書き換えの動作は2種類
+- リダイレクト
+  - クライアントのアクセスの変更を伝える
+- 書き換え
+  - 書き換え先を伝えずに別のURLのコンテンツを応答する
+
+HTTPのリダイレクトはGETメソッドで使うもので、POSTはGETに置き換えられる
+307を使うとPOSTやPUTをそのまま李ダイレクトできるが、新しいブラウザしか対応してない（後で調べる）
+
+
+Unixドメインソケット
+TCPソケットによる接続
+↑違い？？？
